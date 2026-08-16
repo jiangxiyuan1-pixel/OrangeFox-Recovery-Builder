@@ -105,6 +105,11 @@ jobs:
         cd ${{ inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+    - name: 🧩 获取内核预编译文件
+      run: |
+        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
+        git clone https://github.com/ByteWave1014/device_xiaomi_vermeer-kernel.git -b 15 ./${{ inputs.DEVICE_PATH }}/prebuilt-kernel
+
     - name: 🦊 构建OrangeFox
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
