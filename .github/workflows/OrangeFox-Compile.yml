@@ -112,9 +112,9 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
-        # Android 14 QPR3 and newer require <product>-<release>-<variant>.
+        # OrangeFox 14.1's Android 14 QPR3 manifest provides the ap2a release.
         if [ "${{ inputs.MANIFEST_BRANCH }}" = "14.1" ]; then
-          lunch twrp_${{ inputs.DEVICE_NAME }}-trunk_staging-eng
+          lunch twrp_${{ inputs.DEVICE_NAME }}-ap2a-eng
         else
           lunch twrp_${{ inputs.DEVICE_NAME }}-eng
         fi
